@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import ActiveLink from "../ActiveLink/ActiveLink";
 import Fruitsloger from "./../../../Images/Fruitslogor.png";
 
 const Header = ({}) => {
@@ -42,77 +43,77 @@ const Header = ({}) => {
         } w-full block flex-grow lg:flex lg:items-start lg:w-auto`}
       >
         <div className="text-lg  lg:flex-grow">
-          <Link
+          <ActiveLink
             to="/"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
           >
             Home
-          </Link>
-          <Link
+          </ActiveLink>
+          <ActiveLink
             to="/about"
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
           >
             About
-          </Link>
+          </ActiveLink>
 
-          <Link
+          <ActiveLink
             to="/blog"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
           >
             Blog
-          </Link>
-          <Link
+          </ActiveLink>
+          <ActiveLink
             to="/manageinventory"
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
           >
             Manage-inventory
-          </Link>
+          </ActiveLink>
 
-          <Link
+          <ActiveLink
             to="/login"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
           >
             Login
-          </Link>
+          </ActiveLink>
 
-          <Link
+          <ActiveLink
             to="/signup"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
           >
             Sign Up
-          </Link>
+          </ActiveLink>
         </div>
         <div>
-          <Link
+          <ActiveLink
             to="/magnageitems"
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
           >
             Manage Items
-          </Link>
-          <Link
+          </ActiveLink>
+          <ActiveLink
             to="/additems"
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
           >
             Add Items
-          </Link>
-          <Link
+          </ActiveLink>
+          <ActiveLink
             to="/myitems"
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white"
           >
             My Items
-          </Link>
+          </ActiveLink>
 
-          <Link
+          <ActiveLink
             to="/logout"
             className="inline-block text-sm px-2 py-1 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 mx-4 hover:bg-white mt-4 lg:mt-0"
           >
             Logout
-          </Link>
+          </ActiveLink>
         </div>
       </div>
     </nav>
