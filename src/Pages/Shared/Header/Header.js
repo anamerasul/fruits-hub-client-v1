@@ -9,13 +9,7 @@ const Header = ({}) => {
     <nav className="flex items-center justify-between flex-wrap bg-teal-800 p-3">
       <div className="flex items-center flex-shrink-0 text-white mr-4">
         <Link to="/">
-          <img
-            className="h-[50px]"
-            src={Fruitsloger}
-            alt="fruits-hub"
-            sizes=""
-            srcset=""
-          />
+          <img className="h-[50px]" src={Fruitsloger} alt="fruits-hub" />
           <br />
           <h3 className="absolute left-4 top-12 text-3xl font-black text-orange-600">
             Fruits <span className="text-White"> hub</span>
