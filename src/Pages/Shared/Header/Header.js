@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../../FirebaseConfig/Firebase.init";
 import ActiveLink from "../ActiveLink/ActiveLink";
 import Fruitsloger from "./../../../Images/Fruitslogor.png";
 
 const Header = ({}) => {
+  const [user] = useAuthState(auth);
   const [isExpanded, toggleExpansion] = useState(false);
   return (
     <nav className="flex items-center justify-between flex-wrap bg-teal-800 p-3">
@@ -64,51 +67,73 @@ const Header = ({}) => {
           >
             Manage-inventory
           </ActiveLink>
-
-          <ActiveLink
-            to="/login"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
-          >
-            Login
-          </ActiveLink>
-
-          <ActiveLink
-            to="/signup"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
-          >
-            Sign Up
-          </ActiveLink>
+          {!user ? (
+            <ActiveLink
+              to="/login"
+              className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+            >
+              Login
+            </ActiveLink>
+          ) : (
+            ""
+          )}
+          {!user ? (
+            <ActiveLink
+              to="/signup"
+              className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+            >
+              Sign Up
+            </ActiveLink>
+          ) : (
+            ""
+          )}
         </div>
-        <div>
-          <ActiveLink
-            to="/magnageitems"
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
-          >
-            Manage Items
-          </ActiveLink>
-          <ActiveLink
-            to="/additems"
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
-          >
-            Add Items
-          </ActiveLink>
-          <ActiveLink
-            to="/myitems"
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white"
-          >
-            My Items
-          </ActiveLink>
 
-          <ActiveLink
-            to="/logout"
-            className="inline-block text-sm px-2 py-1 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 mx-4 hover:bg-white mt-4 lg:mt-0"
-          >
-            Logout
-          </ActiveLink>
-        </div>
+        {user ? (
+          <div>
+            {user ? (
+              <ActiveLink
+                to="/updateProfile"
+                href="#responsive-header"
+                className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+              >
+                {user?.displayName || user?.email}
+              </ActiveLink>
+            ) : (
+              ""
+            )}
+            <ActiveLink
+              to="/magnageitems"
+              href="#responsive-header"
+              className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+            >
+              Manage Items
+            </ActiveLink>
+            <ActiveLink
+              to="/additems"
+              href="#responsive-header"
+              className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+            >
+              Add Items
+            </ActiveLink>
+            <ActiveLink
+              to="/myitems"
+              href="#responsive-header"
+              className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white"
+            >
+              My Items
+            </ActiveLink>
+
+            <ActiveLink
+              to="/logout"
+              className="inline-block text-sm px-2 py-1 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 mx-4 hover:bg-white mt-4 lg:mt-0"
+            >
+              Logout
+            </ActiveLink>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </nav>
   );
