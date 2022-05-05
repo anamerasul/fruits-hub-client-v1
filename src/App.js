@@ -13,6 +13,7 @@ import AddItems from "./Pages/AddItems/AddItems";
 import MyItems from "./Pages/MyItems/MyItems";
 import Logout from "./Pages/LoginSignUp/Logout/Logout";
 import NotFound from "./Pages/NotFound/NotFound";
+import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
 
 function App() {
   return (
@@ -25,19 +26,48 @@ function App() {
         <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route
           path="/manageinventory"
-          element={<Manageinventory></Manageinventory>}
+          element={
+            <RequireAuth>
+              <Manageinventory></Manageinventory>
+            </RequireAuth>
+          }
         ></Route>
 
         <Route
           path="/magnageitems"
-          element={<ManageItems></ManageItems>}
+          element={
+            <RequireAuth>
+              <ManageItems></ManageItems>
+            </RequireAuth>
+          }
         ></Route>
-        <Route path="/additems" element={<AddItems></AddItems>}></Route>
-        <Route path="/myitems" element={<MyItems></MyItems>}></Route>
+        <Route
+          path="/additems"
+          element={
+            <RequireAuth>
+              <AddItems></AddItems>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/myitems"
+          element={
+            <RequireAuth>
+              <MyItems></MyItems>
+            </RequireAuth>
+          }
+        ></Route>
 
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
-        <Route path="/logout" element={<Logout></Logout>}></Route>
+        <Route
+          path="/logout"
+          element={
+            <RequireAuth>
+              <Logout></Logout>
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
