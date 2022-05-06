@@ -17,6 +17,7 @@ import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UpdateProfile from "./Pages/LoginSignUp/UpdateProfile/UpdateProfile";
+import ForgotPassword from "./Pages/LoginSignUp/ForgotPassword/ForgotPassword";
 
 function App() {
   return (
@@ -68,6 +69,11 @@ function App() {
               <UpdateProfile></UpdateProfile>
             </RequireAuth>
           }
+        ></Route>
+
+        <Route
+          path="/forgotpassword"
+          element={<ForgotPassword></ForgotPassword>}
         ></Route>
 
         <Route path="/login" element={<Login></Login>}></Route>
