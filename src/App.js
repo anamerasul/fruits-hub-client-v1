@@ -18,6 +18,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UpdateProfile from "./Pages/LoginSignUp/UpdateProfile/UpdateProfile";
 import ForgotPassword from "./Pages/LoginSignUp/ForgotPassword/ForgotPassword";
+import UpdateProfileAndEmail from "./Pages/LoginSignUp/UpdateProfileAndEmail/UpdateProfileAndEmail";
+import UpdateEmail from "./Pages/LoginSignUp/UpdateEmail/UpdateEmail";
 
 function App() {
   return (
@@ -63,12 +65,22 @@ function App() {
         ></Route>
 
         <Route
+          path="/updateProfileAndEmail"
+          element={<UpdateProfileAndEmail></UpdateProfileAndEmail>}
+        ></Route>
+
+        <Route
           path="/updateProfile"
           element={
             <RequireAuth>
               <UpdateProfile></UpdateProfile>
             </RequireAuth>
           }
+        ></Route>
+
+        <Route
+          path="/updateemail"
+          element={<UpdateEmail></UpdateEmail>}
         ></Route>
 
         <Route

@@ -91,9 +91,9 @@ const Header = ({}) => {
 
         {user ? (
           <div>
-            {user ? (
+            {user && !user.photoURL ? (
               <ActiveLink
-                to="/updateProfile"
+                to="/updateProfileAndEmail"
                 href="#responsive-header"
                 className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
               >
@@ -102,6 +102,24 @@ const Header = ({}) => {
             ) : (
               ""
             )}
+
+            {user.photoURL ? (
+              <ActiveLink
+                to="/updateProfileAndEmail"
+                href="#responsive-header"
+                className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+              >
+                <img
+                  className="h-[30px] w-[30px] "
+                  style={{ borderRadius: "50%" }}
+                  src={user?.photoURL}
+                  alt=""
+                />
+              </ActiveLink>
+            ) : (
+              ""
+            )}
+
             <ActiveLink
               to="/magnageitems"
               href="#responsive-header"

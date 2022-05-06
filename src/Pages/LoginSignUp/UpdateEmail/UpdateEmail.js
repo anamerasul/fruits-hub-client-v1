@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useAuthState, useUpdateProfile } from "react-firebase-hooks/auth";
-
+import React, { useState } from "react";
+import { useAuthState, useUpdateEmail } from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
-// import "react-toastify/dist/ReactToastify.css";
 import auth from "../../../FirebaseConfig/Firebase.init";
 
-const UpdateProfile = () => {
+const UpdateEmail = () => {
   const [user] = useAuthState(auth);
 
-  const [displayName, setDisplayName] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
-  const [updateProfile] = useUpdateProfile(auth);
+  const [email, setEmail] = useState("");
+  const [updateEmail, updating, error] = useUpdateEmail(auth);
 
   const navigate = useNavigate();
 
@@ -22,9 +18,9 @@ const UpdateProfile = () => {
   //     navigate('/')
   // }
   const from = location.state?.form?.pathname || "/";
-  const handleUpdateProfile = (e) => {
+  const handleUpdateEmail = (e) => {
     e.preventDefault();
-    updateProfile(displayName, photoURL);
+    updateEmail(email);
     //     const from = location.state?.form?.pathname || "/";
     setTimeout(() => {
       if (user) {
@@ -32,44 +28,31 @@ const UpdateProfile = () => {
       }
     }, 2000);
 
-    toast.success("Successfully update profile!!!");
+    toast.success("Successfully update Email!!!");
   };
   return (
     <div className="flex items-center justify-center">
       <div className="px-8 py-6 mx-4 mt-4 text-left bg-white md:w-1/3 lg:w-1/3 sm:w-1/3">
-        <h3 className="text-2xl font-bold text-center">Update profile</h3>
-        <form onSubmit={handleUpdateProfile} action="">
+        <h3 className="text-2xl font-bold text-center">Update Email</h3>
+        <form onSubmit={handleUpdateEmail} action="">
           <div className="mt-4">
             <div>
               <label className="block" htmlFor="Name">
                 Name
               </label>
               <input
-                value={displayName}
-                onChange={(e) => setDisplayName(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 type="text"
-                name="name"
+                name="email"
                 placeholder="Name"
-                className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
-              />
-            </div>
-            <div>
-              <label className="block" htmlFor="PhotoUrl">
-                photo
-              </label>
-              <input
-                value={photoURL}
-                onChange={(e) => setPhotoURL(e.target.value)}
-                type="text"
-                name="photo"
-                placeholder="photourl"
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
               />
             </div>
             <div className="flex">
               <input
                 onClick={async () => {
-                  await updateProfile({ displayName, photoURL });
+                  await updateEmail(email);
                 }}
                 style={{ cursor: "pointer" }}
                 type="submit"
@@ -94,4 +77,4 @@ const UpdateProfile = () => {
   );
 };
 
-export default UpdateProfile;
+export default UpdateEmail;
