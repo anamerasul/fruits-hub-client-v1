@@ -65,7 +65,18 @@ const ForgotPassword = () => {
             </div>
           </div>
         </form>
-        <div className="mt-6 text-grey-dark"></div>
+        <div className="mt-6 text-grey-dark">
+          <div className="mt-6 text-grey-dark">
+            back to home
+            <Link
+              to="/"
+              className="text-blue-600 hover:underline mx-4"
+              href="#"
+            >
+              Home
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

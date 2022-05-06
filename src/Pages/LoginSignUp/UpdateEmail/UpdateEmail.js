@@ -63,13 +63,9 @@ const UpdateEmail = () => {
           </div>
         </form>
         <div className="mt-6 text-grey-dark">
-          reset your password
-          <Link
-            to="/forgotpassword"
-            className="text-blue-600 hover:underline mx-4"
-            href="#"
-          >
-            Reset password
+          back to home
+          <Link to="/" className="text-blue-600 hover:underline mx-4" href="#">
+            Home
           </Link>
         </div>
       </div>

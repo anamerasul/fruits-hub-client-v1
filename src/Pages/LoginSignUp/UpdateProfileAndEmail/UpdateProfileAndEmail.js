@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const UpdateProfileAndEmail = () => {
   return (
-    <div className="flex justify-center flex-col sm:flex-row">
+    <div className="flex justify-center content-center items-center  flex-col sm:flex-row bg-yellow-100 h-[100vh] ">
       <div className="text-center m-4">
         <Link
           to="/updateProfile"
