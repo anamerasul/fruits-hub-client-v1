@@ -14,6 +14,9 @@ import MyItems from "./Pages/MyItems/MyItems";
 import Logout from "./Pages/LoginSignUp/Logout/Logout";
 import NotFound from "./Pages/NotFound/NotFound";
 import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import UpdateProfile from "./Pages/LoginSignUp/UpdateProfile/UpdateProfile";
 
 function App() {
   return (
@@ -58,6 +61,15 @@ function App() {
           }
         ></Route>
 
+        <Route
+          path="/updateProfile"
+          element={
+            <RequireAuth>
+              <UpdateProfile></UpdateProfile>
+            </RequireAuth>
+          }
+        ></Route>
+
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route
@@ -70,6 +82,8 @@ function App() {
         ></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
+
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
