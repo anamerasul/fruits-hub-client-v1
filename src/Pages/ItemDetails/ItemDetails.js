@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../FirebaseConfig/Firebase.init";
 import useItemDetailsHooks from "../../Hooks/useItemDetailsHooks";
 
 const ItemDetails = () => {
   const [user] = useAuthState(auth);
+
+  const navigate = useNavigate();
 
   const itemsId = useParams();
   console.log(itemsId);
@@ -64,21 +66,27 @@ const ItemDetails = () => {
   const handleUpdateWithDelivered = (_id) => {
     // console.log(id);
     d();
-    setdeliverdQuantity(deliverdQuantity + 1);
-    setStock(stock - 1);
+
     console.log(deliverdQuantity, stock);
 
-    if (StockQuantity + stock < 0) {
-      toast.error("Stock finished restock items");
+    if (StockQuantity + stock < 1) {
+      if (StockQuantity + stock < 1) {
+        toast.error("Stock finished restock items");
+        return false;
+      }
+
+      if (
+        StockQuantity + stock < deliverdQuantity + DeliverdQuantiy &&
+        StockQuantity + stock <= 10
+      ) {
+        toast.error(" please stock items");
+      }
+
       return;
     }
 
-    if (
-      StockQuantity + stock < deliverdQuantity + DeliverdQuantiy &&
-      StockQuantity + stock <= 10
-    ) {
-      toast.error(" please stock items");
-    }
+    setdeliverdQuantity(deliverdQuantity + 1);
+    setStock(stock - 1);
 
     handleUpdate();
     handleDeliverd();
@@ -90,6 +98,8 @@ const ItemDetails = () => {
       DeliverdQuantiy: +DeliverdQuantiy + deliverdQuantity,
       StockQuantity: +StockQuantity + stock,
     };
+
+    console.log(JSON.stringify(data));
     fetch(url, {
       method: "PUT", // or 'PUT'
       headers: {
@@ -131,7 +141,7 @@ const ItemDetails = () => {
         .catch((error) => {
           console.error("Error:", error);
         });
-      toast.success("quantiyu add");
+      toast.success("quantity add");
       return;
     } else {
     }
@@ -227,6 +237,12 @@ const ItemDetails = () => {
 
   // console.log(data);
   // console.log(+deliverdQuantity + DeliverdQuantiy, +StockQuantity + stock);
+
+  const handleUpdateStockQuantity = (id) => {
+    console.log(id);
+    navigate(`/update/${id.id}`);
+  };
+
   return (
     <div className="bg-orange-200 p-10">
       <div className="transform bg-yellow-300  hover:-translate-y-3 to-hover hover:bg-green-800 text-center secondary-bg transition duration-300 rounded w-1/2 shadow-lg mx-auto p-4">
@@ -245,12 +261,21 @@ const ItemDetails = () => {
           </h4>
         </div>
 
+        <div className="mr-4"></div>
         <div className="mr-4">
           <button
             onClick={() => handleUpdateWithDelivered(_id)}
             className=" w-full px-6 py-2 mt-4 text-white bg-orange-600 rounded-md hover:bg-orange-800"
           >
             Deliverd Items
+          </button>
+        </div>
+        <div className="mr-4">
+          <button
+            onClick={() => handleUpdateStockQuantity(itemsId)}
+            className=" w-full px-6 py-2 mt-4 text-white bg-orange-600 rounded-md hover:bg-orange-800"
+          >
+            update Stock or Delete product
           </button>
         </div>
       </div>

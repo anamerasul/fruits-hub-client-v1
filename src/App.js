@@ -20,6 +20,7 @@ import ForgotPassword from "./Pages/LoginSignUp/ForgotPassword/ForgotPassword";
 import UpdateProfileAndEmail from "./Pages/LoginSignUp/UpdateProfileAndEmail/UpdateProfileAndEmail";
 import UpdateEmail from "./Pages/LoginSignUp/UpdateEmail/UpdateEmail";
 import ItemDetails from "./Pages/ItemDetails/ItemDetails";
+import UpdateStockQuantity from "./Pages/UpdateStockQuantity/UpdateStockQuantity";
 
 function App() {
   return (
@@ -53,6 +54,15 @@ function App() {
           element={
             <RequireAuth>
               <ItemDetails></ItemDetails>
+            </RequireAuth>
+          }
+        ></Route>
+
+        <Route
+          path="/update/:id"
+          element={
+            <RequireAuth>
+              <UpdateStockQuantity></UpdateStockQuantity>
             </RequireAuth>
           }
         ></Route>
