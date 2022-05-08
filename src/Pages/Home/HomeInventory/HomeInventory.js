@@ -5,7 +5,7 @@ import InventoryItems from "./../../InventoryItems/inventoryItems";
 const HomeInventory = () => {
   const [inventories, navigateToItemsDetails] = useInventoryHooks([]);
 
-  const [DeliverdQuantity, setDeliverdQuantity] = useState(0);
+  // const [DeliverdQuantity, setDeliverdQuantity] = useState(0);
 
   // const navigate = useNavigate();
 

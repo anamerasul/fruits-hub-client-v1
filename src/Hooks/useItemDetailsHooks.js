@@ -15,7 +15,7 @@ const useItemDetailsHooks = () => {
       .then((data) => {
         setitems(data);
       });
-  }, [url]);
+  }, []);
 
   return [items];
 };

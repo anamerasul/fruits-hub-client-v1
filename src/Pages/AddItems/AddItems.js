@@ -16,8 +16,15 @@ const AddItems = () => {
 
     console.log(+data);
 
-    const { DeliverdQuantiy, StockQuantity, description, img, name, price } =
-      data;
+    const {
+      DeliverdQuantiy,
+      StockQuantity,
+      description,
+      img,
+      name,
+      price,
+      Supplier,
+    } = data;
 
     const jsonData = {
       DeliverdQuantiy: +DeliverdQuantiy,
@@ -26,6 +33,7 @@ const AddItems = () => {
       img: img,
       name: name,
       price: +price,
+      Supplier: Supplier,
     };
 
     console.log(jsonData);
@@ -66,20 +74,34 @@ const AddItems = () => {
                 </label>
 
                 <input
+                  type="text"
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                   placeholder="name"
-                  {...register("description")}
+                  {...register("name", { required: true })}
                 />
               </div>
               <div className="mt-4">
-                <label className="block" htmlFor="email">
+                <label className="block" htmlFor="description">
                   Description
                 </label>
 
                 <textarea
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600 "
                   placeholder="description"
-                  {...register("name", { required: true })}
+                  {...register("description")}
+                />
+              </div>
+
+              <div>
+                <label className="block" htmlFor="Supplier">
+                  Supplier
+                </label>
+
+                <input
+                  type="text"
+                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  placeholder="Supplier"
+                  {...register("Supplier", { required: true })}
                 />
               </div>
               <div className="mt-4">
@@ -99,7 +121,7 @@ const AddItems = () => {
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                   placeholder="price"
                   type="number"
-                  {...register("price")}
+                  {...register("price", { required: true })}
                 />
               </div>
 
@@ -110,7 +132,7 @@ const AddItems = () => {
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                   placeholder="StockQuantity"
                   type="number"
-                  {...register("StockQuantity")}
+                  {...register("StockQuantity", { required: true })}
                 />
               </div>
 
