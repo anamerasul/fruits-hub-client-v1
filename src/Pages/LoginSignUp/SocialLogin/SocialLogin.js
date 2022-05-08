@@ -27,32 +27,30 @@ const SocialLogin = () => {
     signInWithGithub();
   };
 
-  console.log(user);
+  if (user) {
+    const url = `http://localhost:3005/login`;
 
-  //   if (user) {
-  //         const url = `http://localhost:5000/login`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: user.email,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("accessToken", data.accessToken); // l
+      });
 
-  //         fetch(url, {
-  //           method: "POST",
-  //           body: JSON.stringify({
-  //             email: user.email,
-  //           }),
-  //           headers: {
-  //             "Content-type": "application/json; charset=UTF-8",
-  //           },
-  //         })
-  //           .then((response) => response.json())
-  //           .then((data) => {
-  //             localStorage.setItem("accessToken", data.accessToken); // l
-  //           });
-
-  setTimeout(() => {
-    if (user) {
-      navigate(from, { replace: true });
-    }
-  }, 2);
-  // navigate(from, { replace: true })
-  //       }
+    setTimeout(() => {
+      if (user) {
+        navigate(from, { replace: true });
+      }
+    }, 2);
+    // navigate(from, { replace: true })
+  }
 
   useEffect(() => {
     if (user) {

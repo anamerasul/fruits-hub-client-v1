@@ -3,11 +3,11 @@ import React from "react";
 const Spinner = () => {
   return (
     <div className="">
-      <div class="text-center">
+      <div className="text-center">
         <div className="">
           <svg
             role="status"
-            class="inline w-20 h-20 mr-2 text-gray-200 animate-spin dark:text-green-900 fill-red-700"
+            className="inline w-20 h-20 mr-2 text-gray-200 animate-spin dark:text-green-900 fill-red-700"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

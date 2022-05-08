@@ -6,6 +6,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../FirebaseConfig/Firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import Spinner from "./../../Shared/Spinner/Spinner";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,8 +25,33 @@ const Login = () => {
     signInWithEmailAndPassword(email, password);
   };
 
+  if (authuser) {
+    const url = `http://localhost:3005/login`;
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: authuser.email,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("accessToken", data.accessToken); // l
+      });
+
+    setTimeout(() => {
+      if (authuser) {
+        navigate(from, { replace: true });
+      }
+    }, 2);
+    // navigate(from, { replace: true })
+  }
+
   useEffect(() => {
-    if (user) {
+    if (authuser) {
       navigate(from, { replace: true });
     }
   }, []);
@@ -38,7 +64,7 @@ const Login = () => {
     );
   }
   if (loading) {
-    return <p>Loading...</p>;
+    return <Spinner></Spinner>;
   }
   if (authuser) {
     navigate(from, { replace: true });

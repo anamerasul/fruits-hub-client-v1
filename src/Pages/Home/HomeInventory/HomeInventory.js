@@ -1,21 +1,40 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useInventoryHooks from "../../../Hooks/useInventoryHooks";
+import InventoryItems from "./../../InventoryItems/inventoryItems";
 const HomeInventory = () => {
+  const [inventories, navigateToItemsDetails] = useInventoryHooks([]);
+
+  const [DeliverdQuantity, setDeliverdQuantity] = useState(0);
+
+  // const navigate = useNavigate();
+
+  // const navigateToServiceDetail = (id) => {
+  //   navigate(`/inventory/${id}`);
+  // };
+
+  console.log(inventories.length);
+
   return (
-    <div>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora
-        distinctio repudiandae autem tenetur, corporis veritatis? Dolore veniam
-        accusamus sunt deleniti deserunt, modi maxime eius impedit asperiores
-        suscipit debitis harum delectus a sapiente nihil consequatur,
-        reprehenderit necessitatibus enim provident expedita ipsam! Illo quos
-        earum vitae dolor quibusdam explicabo, beatae facere doloremque nisi eum
-        suscipit non cumque voluptates blanditiis sit ab culpa omnis et odio
-        eius, deserunt sapiente illum? Quia id rem repellat eligendi ab? Minima
-        maiores ab pariatur repellendus, minus amet reiciendis tenetur earum
-        nam! Dolores maiores expedita magnam quia nobis, libero enim illo,
-        itaque cupiditate vel iste exercitationem voluptatibus. Dolores!
-      </p>
+    <div className="bg-yellow-200 py-4">
+      <h2 className="text-2xl md:text-4xl font-black my-4">Inventory Items</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-4 container ">
+        {inventories.slice(0, 6).map((inventory) => (
+          <InventoryItems
+            navigateToItemsDetails={navigateToItemsDetails}
+            key={inventory._id}
+            inventory={inventory}
+          ></InventoryItems>
+        ))}
+      </div>
+      <div className="my-4 pt-4">
+        <Link
+          to="/manageinventory"
+          className=" w-full px-6 py-2 mt-4 text-white bg-orange-600 rounded-md hover:bg-orange-800"
+        >
+          Manage All
+        </Link>
+      </div>
     </div>
   );
 };

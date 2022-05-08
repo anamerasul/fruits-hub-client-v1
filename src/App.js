@@ -19,6 +19,7 @@ import UpdateProfile from "./Pages/LoginSignUp/UpdateProfile/UpdateProfile";
 import ForgotPassword from "./Pages/LoginSignUp/ForgotPassword/ForgotPassword";
 import UpdateProfileAndEmail from "./Pages/LoginSignUp/UpdateProfileAndEmail/UpdateProfileAndEmail";
 import UpdateEmail from "./Pages/LoginSignUp/UpdateEmail/UpdateEmail";
+import ItemDetails from "./Pages/ItemDetails/ItemDetails";
 
 function App() {
   return (
@@ -43,6 +44,15 @@ function App() {
           element={
             <RequireAuth>
               <ManageItems></ManageItems>
+            </RequireAuth>
+          }
+        ></Route>
+
+        <Route
+          path="/inventory/:id"
+          element={
+            <RequireAuth>
+              <ItemDetails></ItemDetails>
             </RequireAuth>
           }
         ></Route>
