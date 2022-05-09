@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Getting Started with FRUITS HUB
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## name
 
-### `yarn start`
+FRUITS-HUB
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#  LIVE WEBSITE 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `yarn test`
+https://fruits-hub.web.app/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+[FRUITS](https://fruits-hub.web.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technology used:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- TailwindCSS
+- JavaScript
+- react
+- firebase
+- NODEJS
+- EXPRESS
+- MONGODB
 
-### `yarn eject`
+## Package used:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- react 18 and react-dom
+- React-router
+- TailwindCSS
+- react-router-dom
+- firebase
+- react-icons
+- react-firebase-hooks
+- react-toastify
+- recharts
+- react-hooks-form
+- swipper
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Main Features:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Home page contains 3 section first is Slider ,second is Inventory Items , third is Stock vs Deliverd fourth is Fruits Hub Location  section
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Manage inventory page contains items you can Update  and Delete Your inventories  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- visitor will find some simple question with answer in blog
 
-### Code Splitting
+- All Orders pages contains all users orders you can see more and delete 
+- My orders page contains only user who login into website order
+- Add items page You can add product to your inventory
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- login and Sign up on this website using email and password and also google , github signIn method  use 
 
-### Analyzing the Bundle Size
+- serach on Anonymous route visitor goes on not found page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- a varification email send to your desire email when you sign up
+- visitor can update their them and they can reset the password
+-use toast for each of the login,signup,checkout form action 
+- spinner shows while data is processing on  when  it's load complete the spinner is gone;
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
