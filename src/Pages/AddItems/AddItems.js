@@ -12,7 +12,7 @@ const AddItems = () => {
   const [deliveredItem, setDeliveredItem] = useState(0);
   const { register, handleSubmit } = useForm();
   const onSubmitInventory = (data) => {
-    const url = `http://localhost:3005/inventory`;
+    const url = `https://fruitshub-server.onrender.com/inventory`;
 
     console.log(+data);
 

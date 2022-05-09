@@ -7,7 +7,7 @@ const ManageItems = () => {
   const navigate = useNavigate();
   const [allorders, setOrders] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:3005/allorders`;
+    const url = `https://fruitshub-server.onrender.com/allorders`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOrders(data));

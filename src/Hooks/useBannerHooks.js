@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useBannerHooks = () => {
   const [banners, setBanners] = useState([]);
 
-  const url = `http://localhost:3005/banner`;
+  const url = `https://fruitshub-server.onrender.com/banner`;
 
   useEffect(() => {
     fetch(url)

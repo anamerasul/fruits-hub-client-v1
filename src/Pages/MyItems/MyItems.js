@@ -11,7 +11,7 @@ const MyItems = () => {
 
   const [myorders, setMyorders] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:3005/orders`;
+    const url = `https://fruitshub-server.onrender.com/orders`;
     fetch(url, {
       headers: {
         authorization: `${user.email} ${localStorage.getItem("accessToken")}`,

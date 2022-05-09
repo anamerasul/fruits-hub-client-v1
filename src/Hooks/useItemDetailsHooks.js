@@ -7,7 +7,7 @@ const useItemDetailsHooks = () => {
 
   //   console.log(id);
   const [items, setitems] = useState({});
-  const url = `http://localhost:3005/inventory/${id}`;
+  const url = `https://fruitshub-server.onrender.com/inventory/${id}`;
 
   useEffect(() => {
     fetch(url)

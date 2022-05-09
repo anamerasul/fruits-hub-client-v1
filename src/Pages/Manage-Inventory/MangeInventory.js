@@ -21,7 +21,7 @@ const MangeInventory = () => {
   };
 
   useEffect(() => {
-    const url = `http://localhost:3005/manageinventory?page=${page}&size=${size}`;
+    const url = `https://fruitshub-server.onrender.com/manageinventory?page=${page}&size=${size}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setInventories(data));
@@ -31,7 +31,7 @@ const MangeInventory = () => {
   // console.log(inventories);
 
   useEffect(() => {
-    const url = `http://localhost:3005/inventory-count`;
+    const url = `https://fruitshub-server.onrender.com/inventory-count`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

@@ -17,7 +17,7 @@ const ItemDetails = () => {
   // console.log(id);
   const [items] = useItemDetailsHooks();
 
-  // const url = `http://localhost:3005${window.location.pathname}`;
+  // const url = `https://fruitshub-server.onrender.com${window.location.pathname}`;
   const {
     _id,
     DeliverdQuantiy,
@@ -37,7 +37,7 @@ const ItemDetails = () => {
   const [allorders, setOrders] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:3005/allorders`;
+    const url = `https://fruitshub-server.onrender.com/allorders`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOrders(data));
@@ -46,7 +46,7 @@ const ItemDetails = () => {
   const [previousorders, setPreviousorders] = useState({});
 
   useEffect(() => {
-    const url = `http://localhost:3005/allorders/${id}`;
+    const url = `https://fruitshub-server.onrender.com/allorders/${id}`;
 
     // console.log(url);
     fetch(url)
@@ -82,7 +82,7 @@ const ItemDetails = () => {
   };
 
   const handleUpdate = () => {
-    const url = `http://localhost:3005/inventory/${id}`;
+    const url = `https://fruitshub-server.onrender.com/inventory/${id}`;
     const data = {
       DeliverdQuantiy: +DeliverdQuantiy + deliverdQuantity,
       StockQuantity: +StockQuantity + stock,
@@ -114,7 +114,7 @@ const ItemDetails = () => {
     if (previousorders._id !== items._id && previousorders._id !== id) {
       const { StockQuantity, description, img, name, price, Supplier } = items;
       const email = user.email;
-      const url = "http://localhost:3005/orders";
+      const url = "https://fruitshub-server.onrender.com/orders";
 
       fetch(url, {
         method: "POST",
@@ -142,7 +142,7 @@ const ItemDetails = () => {
     // navigate("/magnageitems");
     return;
     //else {
-    //   const url = `http://localhost:3005/orders/${id}`;
+    //   const url = `https://fruitshub-server.onrender.com/orders/${id}`;
     //   const data = {
     //     myquantity: myquantity + 1,
     //   };
@@ -179,7 +179,7 @@ const ItemDetails = () => {
     // });
 
     // if (it.name) {
-    //   const url = `http://localhost:3005/allorders`;
+    //   const url = `https://fruitshub-server.onrender.com/allorders`;
     //   const data = {
     //     myquantity: myquantity + 1,
     //   };
@@ -218,7 +218,7 @@ const ItemDetails = () => {
     //   email,
     // });
 
-    // const url = "http://localhost:3005/order";
+    // const url = "https://fruitshub-server.onrender.com/order";
 
     // fetch(url, {
     //   method: "POST",
@@ -314,7 +314,7 @@ export default ItemDetails;
 //   console.log(orders._id);
 
 //   if (orders._id === items._id) {
-//     const url = `http://localhost:3005/allorders`;
+//     const url = `https://fruitshub-server.onrender.com/allorders`;
 //     const data = {
 //       myquantity: myquantity + 1,
 //     };
@@ -350,7 +350,7 @@ export default ItemDetails;
 //       email,
 //     });
 
-//     const url = "http://localhost:3005/order";
+//     const url = "https://fruitshub-server.onrender.com/order";
 
 //     fetch(url, {
 //       method: "POST",

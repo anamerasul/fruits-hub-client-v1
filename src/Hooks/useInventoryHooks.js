@@ -10,7 +10,7 @@ const useInventoryHooks = () => {
     navigate(`/inventory/${id}`);
   };
 
-  const url = `http://localhost:3005/inventory`;
+  const url = `https://fruitshub-server.onrender.com/inventory`;
 
   useEffect(() => {
     fetch(url)

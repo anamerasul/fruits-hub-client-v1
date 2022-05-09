@@ -12,7 +12,7 @@ const DetailsItem = () => {
 
   const [items, setitems] = useState({});
   const navigate = useNavigate();
-  const url = `http://localhost:3005/allorders/${id}`;
+  const url = `https://fruitshub-server.onrender.com/allorders/${id}`;
 
   console.log(url);
 
@@ -24,7 +24,7 @@ const DetailsItem = () => {
       });
   }, []);
 
-  // const url = `http://localhost:3005${window.location.pathname}`;
+  // const url = `https://fruitshub-server.onrender.com${window.location.pathname}`;
   const {
     _id,
     StockQuantity,

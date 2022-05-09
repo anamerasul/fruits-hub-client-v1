@@ -26,7 +26,7 @@ const Login = () => {
   };
 
   if (authuser) {
-    const url = `http://localhost:3005/login`;
+    const url = `https://fruitshub-server.onrender.com/login`;
 
     fetch(url, {
       method: "POST",

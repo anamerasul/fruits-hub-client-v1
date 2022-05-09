@@ -12,7 +12,7 @@ const UpdateStockQuantity = () => {
 
   const [items, setitems] = useState({});
   const navigate = useNavigate();
-  const url = `http://localhost:3005/update/${id}`;
+  const url = `https://fruitshub-server.onrender.com/update/${id}`;
 
   // console.log(url);
 
@@ -24,7 +24,7 @@ const UpdateStockQuantity = () => {
       });
   }, []);
 
-  // const url = `http://localhost:3005${window.location.pathname}`;
+  // const url = `https://fruitshub-server.onrender.com${window.location.pathname}`;
   const [newquantity, setnewquantity] = useState(0);
   const { StockQuantity, description, img, name, price, Supplier } = items;
 
@@ -38,7 +38,7 @@ const UpdateStockQuantity = () => {
   };
 
   const handleUpdate = () => {
-    //     const url = `http://localhost:3005/update/${id}`;
+    //     const url = `https://fruitshub-server.onrender.com/update/${id}`;
     const data = {
       StockQuantity: +StockQuantity + newquantity,
     };
