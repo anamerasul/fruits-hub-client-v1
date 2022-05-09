@@ -14,19 +14,15 @@ const Banner = () => {
   const [banners] = useBannerHooks([]);
   console.log(banners);
   return (
-    <div className="relative bg-yellow-200">
+    <div className="relative container bg-yellow-200">
       {banners.length === 0 ? (
         <Spinner></Spinner>
       ) : (
-        <div className="h-[60vh] sm:h-[95vh] w-[100vw] bg-yellow-200 ">
+        <div className="h-[80vh] sm:h-[95vh] sm:w-[100vw] bg-yellow-200 ">
           <Swiper className="mySwiper">
             {banners.map((banner) => (
               <SwiperSlide key={banner._id} className="bg-yellow-300">
-                <img
-                  className="w-25 h-25 bg-yellow-300"
-                  src={banner.image}
-                  alt=""
-                />
+                <img className="w-25 bg-yellow-300" src={banner.image} alt="" />
 
                 {/* <h2 className="text-4xl bg-yellow-200 sm:text-6xl font-black text-green-700 z-50">
                   Welcome to fruits hub

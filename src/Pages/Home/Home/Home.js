@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "../Banner/Banner";
+import FruitsHubLocation from "../FruitsHubLocation/FruitsHubLocation";
 import HomeInventory from "../HomeInventory/HomeInventory";
 import StockVsDeliverdChart from "../StockVSDeliverdChart/StockVsDeliverdChart";
 
@@ -8,7 +9,8 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <HomeInventory></HomeInventory>
-      <StockVsDeliverdChart></StockVsDeliverdChart>
+      {/* <StockVsDeliverdChart></StockVsDeliverdChart> */}
+      <FruitsHubLocation></FruitsHubLocation>
     </div>
   );
 };

@@ -22,6 +22,7 @@ import UpdateEmail from "./Pages/LoginSignUp/UpdateEmail/UpdateEmail";
 import ItemDetails from "./Pages/ItemDetails/ItemDetails";
 import UpdateStockQuantity from "./Pages/UpdateStockQuantity/UpdateStockQuantity";
 import DetailsItem from "./Pages/DetailsItem/DetailsItem";
+import Footer from "./Pages/Shared/Footer/Footer";
 
 function App() {
   return (
@@ -128,7 +129,7 @@ function App() {
         ></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
-
+      <Footer></Footer>
       <ToastContainer></ToastContainer>
     </div>
   );
