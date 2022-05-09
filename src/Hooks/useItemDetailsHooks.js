@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 const useItemDetailsHooks = () => {
   const itemsId = useParams();
-  console.log(itemsId);
+  // console.log(itemsId);
   const { id } = itemsId;
 
   //   console.log(id);

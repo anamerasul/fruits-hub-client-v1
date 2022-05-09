@@ -16,7 +16,7 @@ const inventoryItems = (props) => {
   const { navigateToItemsDetails } = props;
 
   return (
-    <div className="transform bg-yellow-300  hover:-translate-y-3 to-hover hover:bg-green-800 text-center secondary-bg transition duration-300 rounded w-full shadow-lg mx-auto p-4">
+    <div className="transform bg-yellow-300  hover:-translate-y-3 to-hover hover:bg-green-800 text-center secondary-bg transition duration-300 rounded w-4/5 shadow-lg mx-auto p-6">
       <div>
         <img className="mx-auto py-10   rounded-t" src={img} alt="" />
         <h1 className="px-5 pt-5 text-2xl font-bold hover:text-blue-100">

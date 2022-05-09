@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useInventoryHooks from "../../../Hooks/useInventoryHooks";
 import InventoryItems from "./../../InventoryItems/inventoryItems";
+import Spinner from "./../../Shared/Spinner/Spinner";
 const HomeInventory = () => {
   const [inventories, navigateToItemsDetails] = useInventoryHooks([]);
 
@@ -13,20 +14,25 @@ const HomeInventory = () => {
   //   navigate(`/inventory/${id}`);
   // };
 
-  console.log(inventories.length);
+  // console.log(inventories.length);
 
   return (
-    <div className="bg-yellow-200 py-4">
+    <div className="bg-yellow-200 py-4  px-8">
       <h2 className="text-2xl md:text-4xl font-black my-4">Inventory Items</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-4 container ">
-        {inventories.slice(0, 6).map((inventory) => (
-          <InventoryItems
-            navigateToItemsDetails={navigateToItemsDetails}
-            key={inventory._id}
-            inventory={inventory}
-          ></InventoryItems>
-        ))}
-      </div>
+      {inventories.length === 0 ? (
+        <Spinner></Spinner>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-6 container ">
+          {inventories.slice(0, 6).map((inventory) => (
+            <InventoryItems
+              navigateToItemsDetails={navigateToItemsDetails}
+              key={inventory._id}
+              inventory={inventory}
+            ></InventoryItems>
+          ))}
+        </div>
+      )}
+
       <div className="my-4 pt-4">
         <Link
           to="/manageinventory"

@@ -8,7 +8,7 @@ import logo from "./../../../logo.svg";
 
 const Logout = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
+  // console.log(user);
 
   let navigate = useNavigate();
   let location = useLocation();

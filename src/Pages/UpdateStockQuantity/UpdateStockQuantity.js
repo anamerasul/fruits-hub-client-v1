@@ -52,9 +52,9 @@ const UpdateStockQuantity = () => {
       StockQuantity: +StockQuantity + newquantity,
     };
 
-    console.log({ data });
+    // // console.log({ data });
 
-    console.log(JSON.stringify(data));
+    // console.log(JSON.stringify(data));
     fetch(url, {
       method: "PUT", // or 'PUT'
       headers: {
@@ -68,7 +68,7 @@ const UpdateStockQuantity = () => {
         //     setnewquantity(newquantity + 1);
       })
       .catch((error) => {
-        console.error("Error:", error);
+        // console.error("Error:", error);
       });
 
     toast.success("Stock adding");
@@ -76,9 +76,11 @@ const UpdateStockQuantity = () => {
 
   const handleDelete = (id) => {
     if (items._id === id) {
-      console.log("delete");
+      // console.log("delete");
 
       const proceed = window.confirm("Are you sure?");
+
+      // toast.confirm("sure");
 
       if (proceed) {
         fetch(url, {
@@ -95,7 +97,7 @@ const UpdateStockQuantity = () => {
             //     setnewquantity(newquantity + 1);
           })
           .catch((error) => {
-            console.error("Error:", error);
+            // console.error("Error:", error);
           });
 
         toast.success("successfully Delete");

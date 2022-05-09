@@ -11,10 +11,10 @@ const ItemDetails = () => {
   const navigate = useNavigate();
 
   const itemsId = useParams();
-  console.log(itemsId);
+  // console.log(itemsId);
   const { id } = itemsId;
 
-  console.log(id);
+  // console.log(id);
   const [items] = useItemDetailsHooks();
 
   // const url = `http://localhost:3005${window.location.pathname}`;
@@ -34,41 +34,30 @@ const ItemDetails = () => {
 
   const [myquantity, setMymyquantity] = useState(1);
 
-  console.log(deliverdQuantity);
-  console.log(items);
-  const url = `http://localhost:3005/allorders`;
   const [allorders, setOrders] = useState([]);
 
-  const [it, setIt] = useState({});
-
   useEffect(() => {
+    const url = `http://localhost:3005/allorders`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
 
-  console.log(user.email);
+  const [previousorders, setPreviousorders] = useState({});
 
-  console.log(it);
-  // allorders.map((item) => setIt(item));
+  useEffect(() => {
+    const url = `http://localhost:3005/allorders/${id}`;
 
-  console.log(!it.name, !!items.name);
+    // console.log(url);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setPreviousorders(data));
+  }, []);
 
-  console.log(it.name);
-
-  const d = () => {
-    allorders.map((item) => setIt(item));
-    console.log(!!it.name === !!items.name);
-
-    console.log(it.name);
-  };
+  if (previousorders._id === _id) {
+  }
 
   const handleUpdateWithDelivered = (_id) => {
-    // console.log(id);
-    d();
-
-    console.log(deliverdQuantity, stock);
-
     if (StockQuantity + stock < 1) {
       if (StockQuantity + stock < 1) {
         toast.error("Stock finished restock items");
@@ -89,7 +78,7 @@ const ItemDetails = () => {
     setStock(stock - 1);
 
     handleUpdate();
-    handleDeliverd();
+    handleDeliverd(_id);
   };
 
   const handleUpdate = () => {
@@ -99,7 +88,7 @@ const ItemDetails = () => {
       StockQuantity: +StockQuantity + stock,
     };
 
-    console.log(JSON.stringify(data));
+    // console.log(JSON.stringify(data));
     fetch(url, {
       method: "PUT", // or 'PUT'
       headers: {
@@ -113,133 +102,148 @@ const ItemDetails = () => {
         setdeliverdQuantity(deliverdQuantity + 1);
         setStock(stock - 1);
       })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      .catch((error) => {});
   };
 
-  const handleDeliverd = () => {
+  const handleDeliverd = (_id) => {
+    if (previousorders._id === items._id) {
+      navigate("/magnageitems");
+    }
     setMymyquantity(myquantity + 1);
-    if (it.name) {
-      const url = `http://localhost:3005/allorders`;
-      const data = {
-        myquantity: myquantity + 1,
-      };
+
+    if (previousorders._id !== items._id && previousorders._id !== id) {
+      const { StockQuantity, description, img, name, price, Supplier } = items;
+      const email = user.email;
+      const url = "http://localhost:3005/orders";
+
       fetch(url, {
-        method: "PUT", // or 'PUT'
+        method: "POST",
+        body: JSON.stringify({
+          StockQuantity: StockQuantity + stock,
+          description,
+          img,
+          name,
+          price,
+          Supplier,
+          email,
+          myquantity,
+        }),
         headers: {
           authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
-          "Content-Type": "application/json",
+          "Content-type": "application/json; charset=UTF-8",
         },
-        body: JSON.stringify(data),
       })
         .then((response) => response.json())
-        .then((data) => {
-          // setdeliverdQuantity(deliverdQuantity + 1);
-          // setStock(stock - 1);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-      toast.success("quantity add");
-      return;
-    } else {
+        .then((data) => toast(data.success));
     }
 
-    const { StockQuantity, description, img, name, price, Supplier } = items;
-    const email = user.email;
-    console.log({
-      StockQuantity: StockQuantity + stock,
-      description,
-      img,
-      name,
-      price,
-      Supplier,
-      myquantity,
-      email,
-    });
+    toast.success("product  add");
 
-    const url = "http://localhost:3005/order";
+    // navigate("/magnageitems");
+    return;
+    //else {
+    //   const url = `http://localhost:3005/orders/${id}`;
+    //   const data = {
+    //     myquantity: myquantity + 1,
+    //   };
+    //   fetch(url, {
+    //     method: "PUT", // or 'PUT'
+    //     headers: {
+    //       authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((response) => response.json())
+    //     .then((data) =>
+    //       // setdeliverdQuantity(deliverdQuantity + 1);
+    //       // setStock(stock - 1);
+    //       toast(data.success)
+    //     )
+    //     .catch((error) => {
+    //       console.error("Error:", error);
+    //     });
+    //   toast.success("quantity add");
+    // }
 
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        StockQuantity: StockQuantity + stock,
-        description,
-        img,
-        name,
-        price,
-        Supplier,
-        email,
-        myquantity,
-      }),
-      headers: {
-        authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => toast(data.success));
+    navigate("/");
+
+    // allorders.find((orders) => {
+    //   console.log(orders._id);
+
+    //   if (orders._id === items._id) {
+    //     console.log(true);
+    //   } else {
+    //     console.log(false);
+    //   }
+    // });
+
+    // if (it.name) {
+    //   const url = `http://localhost:3005/allorders`;
+    //   const data = {
+    //     myquantity: myquantity + 1,
+    //   };
+    //   fetch(url, {
+    //     method: "PUT", // or 'PUT'
+    //     headers: {
+    //       authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       // setdeliverdQuantity(deliverdQuantity + 1);
+    //       // setStock(stock - 1);
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error:", error);
+    //     });
+    //   toast.success("quantity add");
+    //   return;
+    // } else {
+    // }
+
+    // const { StockQuantity, description, img, name, price, Supplier } = items;
+    // const email = user.email;
+    // console.log({
+    //   _id,
+    //   StockQuantity: StockQuantity + stock,
+    //   description,
+    //   img,
+    //   name,
+    //   price,
+    //   Supplier,
+    //   myquantity,
+    //   email,
+    // });
+
+    // const url = "http://localhost:3005/order";
+
+    // fetch(url, {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     _id,
+    //     StockQuantity: StockQuantity + stock,
+    //     description,
+    //     img,
+    //     name,
+    //     price,
+    //     Supplier,
+    //     email,
+    //     myquantity,
+    //   }),
+    //   headers: {
+    //     authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
+    //     "Content-type": "application/json; charset=UTF-8",
+    //   },
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => toast(data.success));
     // } console.log({ name, price, email }));
   };
-  // const handleDeliverd = () => {
-  //   setMymyquantity(myquantity + 1);
-  //   const { StockQuantity, description, img, name, price, Supplier } = items;
-  //   const email = user.email;
-  //   console.log({
-  //     StockQuantity,
-  //     description,
-  //     img,
-  //     name,
-  //     price,
-  //     Supplier,
-  //     myquantity,
-  //     email,
-  //   });
-
-  //   console.log(
-  //     JSON.stringify({
-  //       myquantity,
-  //       StockQuantity,
-  //       description,
-  //       img,
-  //       name,
-  //       price,
-  //       Supplier,
-  //       email,
-  //     })
-  //   );
-
-  //     const url = "http://localhost:5000/addorder";
-
-  //     fetch(url, {
-  //       method: "POST",
-  //       body: JSON.stringify({    myquantity,
-  //         StockQuantity,
-  //         description,
-  //         img,
-  //         name,
-  //         price,
-  //         Supplier,
-  //         email}),
-  //       headers: {
-  //         authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
-  //         "Content-type": "application/json; charset=UTF-8",
-  //       },
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => toast(data.success));
-  //     // } console.log({ name, price, email }));
-  //   };
-  // };
-
-  // console.log(JSON.stringify(data));
-
-  // console.log(data);
-  // console.log(+deliverdQuantity + DeliverdQuantiy, +StockQuantity + stock);
 
   const handleUpdateStockQuantity = (id) => {
-    console.log(id);
     navigate(`/update/${id.id}`);
   };
 
@@ -305,3 +309,68 @@ export default ItemDetails;
 //       .then((data) => toast(data.success));
 //     // } console.log({ name, price, email }));
 //   };
+
+// allorders.filter((orders) => {
+//   console.log(orders._id);
+
+//   if (orders._id === items._id) {
+//     const url = `http://localhost:3005/allorders`;
+//     const data = {
+//       myquantity: myquantity + 1,
+//     };
+//     fetch(url, {
+//       method: "PUT", // or 'PUT'
+//       headers: {
+//         authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(data),
+//     })
+//       .then((response) => response.json())
+//       .then((data) => {
+//         // setdeliverdQuantity(deliverdQuantity + 1);
+//         // setStock(stock - 1);
+//       })
+//       .catch((error) => {
+//         console.error("Error:", error);
+//       });
+//     toast.success("quantity add");
+//   } else {
+//     const { StockQuantity, description, img, name, price, Supplier } = items;
+//     const email = user.email;
+//     console.log({
+//       _id,
+//       StockQuantity: StockQuantity + stock,
+//       description,
+//       img,
+//       name,
+//       price,
+//       Supplier,
+//       myquantity,
+//       email,
+//     });
+
+//     const url = "http://localhost:3005/order";
+
+//     fetch(url, {
+//       method: "POST",
+//       body: JSON.stringify({
+//         _id,
+//         StockQuantity: StockQuantity + stock,
+//         description,
+//         img,
+//         name,
+//         price,
+//         Supplier,
+//         email,
+//         myquantity,
+//       }),
+//       headers: {
+//         authorization: `${user.email} ${localStorage.getItem("accessToken")}`,
+//         "Content-type": "application/json; charset=UTF-8",
+//       },
+//     })
+//       .then((response) => response.json())
+//       .then((data) => toast(data.success));
+//   }
+// });

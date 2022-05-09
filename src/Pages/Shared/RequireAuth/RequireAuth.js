@@ -4,13 +4,14 @@ import { Navigate, useLocation } from "react-router";
 import { useSendEmailVerification } from "react-firebase-hooks/auth";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "./../../../FirebaseConfig/Firebase.init";
+import Spinner from "../Spinner/Spinner";
 const RequireAuth = ({ children }) => {
   const location = useLocation();
   const [user, loading] = useAuthState(auth);
   const [sendEmailVerification] = useSendEmailVerification(auth);
 
   if (loading) {
-    return <p className="text-center">Loading</p>;
+    return <Spinner></Spinner>;
   }
 
   if (!user) {
