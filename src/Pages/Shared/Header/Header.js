@@ -121,7 +121,14 @@ const Header = () => {
             )}
 
             <ActiveLink
-              to="/magnageitems"
+              to="/magnageallitems"
+              href="#responsive-header"
+              className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
+            >
+              Manage Items
+            </ActiveLink>
+            <ActiveLink
+              to="/allorders"
               href="#responsive-header"
               className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
             >

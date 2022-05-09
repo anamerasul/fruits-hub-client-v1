@@ -107,7 +107,7 @@ const ItemDetails = () => {
 
   const handleDeliverd = (_id) => {
     if (previousorders._id === items._id) {
-      navigate("/magnageitems");
+      navigate("/allorders");
     }
     setMymyquantity(myquantity + 1);
 
@@ -139,7 +139,7 @@ const ItemDetails = () => {
 
     toast.success("product  add");
 
-    // navigate("/magnageitems");
+    navigate("/allorders");
     return;
     //else {
     //   const url = `https://fruitshub-server.onrender.com/orders/${id}`;
@@ -249,7 +249,7 @@ const ItemDetails = () => {
 
   return (
     <div className="bg-orange-200 p-10">
-      <div className="transform bg-yellow-300  hover:-translate-y-3 to-hover hover:bg-green-800 text-center secondary-bg transition duration-300 rounded w-1/2 shadow-lg mx-auto p-4">
+      <div className="transform bg-yellow-300  hover:-translate-y-3 to-hover hover:bg-green-800 text-center secondary-bg transition duration-300 rounded w-full sm:w-1/2 shadow-lg mx-auto p-4">
         <div>
           <img className="mx-auto py-10   rounded-t" src={img} alt="" />
           <h1 className="px-5 pt-5 text-2xl font-bold hover:text-blue-100">
@@ -279,7 +279,7 @@ const ItemDetails = () => {
             onClick={() => handleUpdateStockQuantity(itemsId)}
             className=" w-full px-6 py-2 mt-4 text-white bg-orange-600 rounded-md hover:bg-orange-800"
           >
-            update Stock or Delete product
+            update Stock
           </button>
         </div>
       </div>

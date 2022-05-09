@@ -12,13 +12,13 @@ import Spinner from "./../../Shared/Spinner/Spinner";
 
 const Banner = () => {
   const [banners] = useBannerHooks([]);
-  console.log(banners);
+  // console.log(banners);
   return (
     <div className="relative bg-yellow-200">
       {banners.length === 0 ? (
         <Spinner></Spinner>
       ) : (
-        <div className="h-[80vh] sm:h-[95vh] sm:w-[100vw] bg-yellow-200 ">
+        <div className="h-[80vh] sm:h-[95vh] bg-yellow-200 ">
           <Swiper className="mySwiper">
             {banners.map((banner) => (
               <SwiperSlide key={banner._id} className="bg-yellow-300">

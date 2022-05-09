@@ -21,8 +21,8 @@ const ManageItems = () => {
 
   return (
     <div>
-      <div className="bg-yellow-200 py-4  px-8">
-        <h2 className="text-2xl md:text-4xl font-black my-4">
+      <div className="bg-yellow-100 py-4  px-8">
+        <h2 className="text-2xl md:text-4xl font-black my-4 ">
           {" "}
           ALL USER ORDERS ITEMS
         </h2>
@@ -30,7 +30,7 @@ const ManageItems = () => {
         {allorders.length === 0 ? (
           <Spinner></Spinner>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3  lg:grid-cols-4 gap-6 container ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 gap-6 gap-y-8 container ">
             {allorders.map((order) => (
               <ItemCard
                 key={order._id}

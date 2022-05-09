@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import ManageSingleItems from "../ManageSingleItems/ManageSingleItems";
 import Spinner from "../Shared/Spinner/Spinner";
-import InventoryItems from "./../InventoryItems/inventoryItems";
 
-const MangeInventory = () => {
-  // const [inventories, navigateToItemsDetails] = useInventoryHooks({});
-
+const ManageAllItems = () => {
   const [inventories, setInventories] = useState([]);
 
   const [pageCount, setPageCount] = useState(0);
@@ -16,8 +14,8 @@ const MangeInventory = () => {
 
   const navigate = useNavigate();
 
-  const navigateToItemsDetails = (id) => {
-    navigate(`/inventory/${id}`);
+  const navigateToDeleteItem = (id) => {
+    navigate(`/delete/${id}`);
   };
 
   useEffect(() => {
@@ -41,6 +39,10 @@ const MangeInventory = () => {
       });
   }, []);
 
+  useEffect(() => {
+    //     document.getElementById("btn").style.display = "none";
+  }, []);
+
   return (
     <div>
       <div className="bg-yellow-200 py-4 ">
@@ -48,19 +50,19 @@ const MangeInventory = () => {
           className="text-2xl md:text-4xl font-black my-10"
           id="inventory-items"
         >
-          Inventory Items{" "}
+          Manage Items{" "}
         </h2>
 
         {inventories.length === 0 ? (
           <Spinner></Spinner>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-4 container ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 container ">
             {inventories.map((inventory) => (
-              <InventoryItems
-                navigateToItemsDetails={navigateToItemsDetails}
+              <ManageSingleItems
+                navigateToDeleteItem={navigateToDeleteItem}
                 key={inventory._id}
                 inventory={inventory}
-              ></InventoryItems>
+              ></ManageSingleItems>
             ))}
           </div>
         )}
@@ -80,12 +82,13 @@ const MangeInventory = () => {
             </button>
           ))}
         </div>
-        {/* <Link
+
+        <Link
           to="/additems"
           className=" w-full px-6 py-2 mt-4 text-white bg-orange-600 rounded-md hover:bg-orange-800"
         >
           ADD ITEMS
-        </Link> */}
+        </Link>
         <select
           className="hidden"
           onChange={(e) => setSize(e.target.value)}
@@ -94,12 +97,12 @@ const MangeInventory = () => {
         >
           <option value="12">12</option>
           {/* <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="20">20</option> */}
+                <option value="15">15</option>
+                <option value="20">20</option> */}
         </select>
       </div>
     </div>
   );
 };
 
-export default MangeInventory;
+export default ManageAllItems;

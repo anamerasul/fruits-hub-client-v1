@@ -6,7 +6,7 @@ import QuestionWithAnswes from "./QuestionWithAnswes";
 const Blog = () => {
   const [answers] = useBlogsHooks([]);
 
-  console.log(answers);
+  // console.log(answers);
   return (
     <div className="bg-yellow-200">
       {answers.length === 0 ? (

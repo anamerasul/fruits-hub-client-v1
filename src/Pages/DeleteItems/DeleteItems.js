@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../FirebaseConfig/Firebase.init";
 
-const DetailsItem = () => {
+const DeleteItems = () => {
   const itemsId = useParams();
 
   const [user] = useAuthState(auth);
@@ -12,7 +12,7 @@ const DetailsItem = () => {
 
   const [items, setitems] = useState({});
   const navigate = useNavigate();
-  const url = `https://fruitshub-server.onrender.com/allorders/${id}`;
+  const url = `https://fruitshub-server.onrender.com/update/${id}`;
 
   // console.log(url);
 
@@ -25,19 +25,16 @@ const DetailsItem = () => {
   }, []);
 
   // const url = `https://fruitshub-server.onrender.com${window.location.pathname}`;
+
   const {
-    _id,
     StockQuantity,
     description,
     img,
     name,
     price,
     Supplier,
-    email,
-    myquantity,
+    DeliverdQuantiy,
   } = items;
-
-  // console.log(items);
 
   const handleDelete = (id) => {
     if (items._id === id) {
@@ -68,9 +65,11 @@ const DetailsItem = () => {
         toast.success("successfully Delete");
       }
 
-      navigate("/");
+      navigate("/magnageallitems");
     }
   };
+
+  //   useEffect(()=>{},[])
 
   return (
     <div>
@@ -85,8 +84,7 @@ const DetailsItem = () => {
             <p className="px-5 pt-5">Price :{price}</p>
             <p className="px-5 pt-5">Supplier:{Supplier}</p>
             <h4 className="px-5 pt-5">Stock:{StockQuantity}</h4>
-            <h4 className="px-1 pt-5">ordering person:{email}</h4>
-            <h4 className="px-5 pt-5">orders quantity:{myquantity}</h4>
+            <h4 className="px-5 pt-5">Deliverd Quantity:{DeliverdQuantiy}</h4>
           </div>
 
           <div className="mr-4">
@@ -105,4 +103,4 @@ const DetailsItem = () => {
   );
 };
 
-export default DetailsItem;
+export default DeleteItems;

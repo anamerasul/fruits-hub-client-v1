@@ -23,6 +23,8 @@ import ItemDetails from "./Pages/ItemDetails/ItemDetails";
 import UpdateStockQuantity from "./Pages/UpdateStockQuantity/UpdateStockQuantity";
 import DetailsItem from "./Pages/DetailsItem/DetailsItem";
 import Footer from "./Pages/Shared/Footer/Footer";
+import ManageAllItems from "./Pages/ManageAllItems/ManageAllItems";
+import DeleteItems from "./Pages/DeleteItems/DeleteItems";
 
 function App() {
   return (
@@ -43,10 +45,19 @@ function App() {
         ></Route>
 
         <Route
-          path="/magnageitems"
+          path="/allorders"
           element={
             <RequireAuth>
               <ManageItems></ManageItems>
+            </RequireAuth>
+          }
+        ></Route>
+
+        <Route
+          path="/magnageallitems"
+          element={
+            <RequireAuth>
+              <ManageAllItems></ManageAllItems>
             </RequireAuth>
           }
         ></Route>
@@ -65,6 +76,15 @@ function App() {
           element={
             <RequireAuth>
               <UpdateStockQuantity></UpdateStockQuantity>
+            </RequireAuth>
+          }
+        ></Route>
+
+        <Route
+          path="/delete/:id"
+          element={
+            <RequireAuth>
+              <DeleteItems></DeleteItems>
             </RequireAuth>
           }
         ></Route>

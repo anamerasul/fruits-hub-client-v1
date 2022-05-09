@@ -32,9 +32,9 @@ const UpdateStockQuantity = () => {
     setnewquantity(newquantity + 1);
     handleUpdate();
 
-    console.log(_id);
+    // console.log(_id);
     //     await navigate(`/inventory${id}`);
-    await navigate(`/inventory/${_id}`);
+    // await navigate(`/inventory/${_id}`);
   };
 
   const handleUpdate = () => {
@@ -65,43 +65,43 @@ const UpdateStockQuantity = () => {
     toast.success("Stock adding");
   };
 
-  const handleDelete = (id) => {
-    if (items._id === id) {
-      // console.log("delete");
+  // const handleDelete = (id) => {
+  //   if (items._id === id) {
+  //     // console.log("delete");
 
-      const proceed = window.confirm("Are you sure?");
+  //     const proceed = window.confirm("Are you sure?");
 
-      // toast.confirm("sure");
+  //     // toast.confirm("sure");
 
-      if (proceed) {
-        fetch(url, {
-          method: "Delete", // or 'PUT'
-          headers: {
-            authorization: `${user.email} ${localStorage.getItem(
-              "accessToken"
-            )}`,
-            "Content-Type": "application/json",
-          },
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            //     setnewquantity(newquantity + 1);
-          })
-          .catch((error) => {
-            // console.error("Error:", error);
-          });
+  //     if (proceed) {
+  //       fetch(url, {
+  //         method: "Delete", // or 'PUT'
+  //         headers: {
+  //           authorization: `${user.email} ${localStorage.getItem(
+  //             "accessToken"
+  //           )}`,
+  //           "Content-Type": "application/json",
+  //         },
+  //       })
+  //         .then((response) => response.json())
+  //         .then((data) => {
+  //           //     setnewquantity(newquantity + 1);
+  //         })
+  //         .catch((error) => {
+  //           // console.error("Error:", error);
+  //         });
 
-        toast.success("successfully Delete");
-      }
+  //       toast.success("successfully Delete");
+  //     }
 
-      navigate("/");
-    }
-  };
+  //     navigate("/");
+  //   }
+  // };
 
   return (
     <div>
       <div className="bg-orange-200 p-10">
-        <div className="transform bg-yellow-300  hover:-translate-y-3 to-hover hover:bg-green-800 text-center secondary-bg transition duration-300 rounded w-1/2 shadow-lg mx-auto p-4">
+        <div className="transform bg-yellow-300  hover:-translate-y-3 to-hover hover:bg-green-800 text-center secondary-bg transition duration-300 rounded w-full sm:w-1/2 shadow-lg mx-auto p-4">
           <div>
             <img className="mx-auto py-10   rounded-t" src={img} alt="" />
             <h1 className="px-5 pt-5 text-2xl font-bold hover:text-blue-100">
@@ -122,12 +122,12 @@ const UpdateStockQuantity = () => {
             </button>
 
             <div className="mr-4">
-              <button
+              {/* <button
                 onClick={() => handleDelete(items._id)}
                 className=" w-full px-6 py-2 mt-4 text-white bg-orange-600 rounded-md hover:bg-orange-800"
               >
                 Delete
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

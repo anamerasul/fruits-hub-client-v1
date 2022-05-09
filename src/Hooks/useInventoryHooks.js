@@ -17,6 +17,8 @@ const useInventoryHooks = () => {
       .then((res) => res.json())
       .then((data) => {
         setInventories(data);
+
+        // console.log(data);
       });
   }, []);
 
