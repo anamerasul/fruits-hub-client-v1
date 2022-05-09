@@ -21,6 +21,7 @@ import UpdateProfileAndEmail from "./Pages/LoginSignUp/UpdateProfileAndEmail/Upd
 import UpdateEmail from "./Pages/LoginSignUp/UpdateEmail/UpdateEmail";
 import ItemDetails from "./Pages/ItemDetails/ItemDetails";
 import UpdateStockQuantity from "./Pages/UpdateStockQuantity/UpdateStockQuantity";
+import DetailsItem from "./Pages/DetailsItem/DetailsItem";
 
 function App() {
   return (
@@ -63,6 +64,14 @@ function App() {
           element={
             <RequireAuth>
               <UpdateStockQuantity></UpdateStockQuantity>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/itemscarddetails/:id"
+          element={
+            <RequireAuth>
+              <DetailsItem></DetailsItem>
             </RequireAuth>
           }
         ></Route>
