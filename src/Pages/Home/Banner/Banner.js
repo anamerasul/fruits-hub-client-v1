@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle";
@@ -14,7 +14,7 @@ const Banner = () => {
   const [banners] = useBannerHooks([]);
   console.log(banners);
   return (
-    <div className="relative container bg-yellow-200">
+    <div className="relative bg-yellow-200">
       {banners.length === 0 ? (
         <Spinner></Spinner>
       ) : (

@@ -25,7 +25,68 @@ const NotFound = () => {
         />
       </div> */}
 
-      <div className=" my-12 flex flex-col items-between justify-between">
+      <div
+        className="
+    flex
+    items-center
+    justify-center
+    w-screen
+    h-screen
+    bg-gradient-to-r
+    from-yellow-400
+    to-green-300
+    opacity-80
+  "
+      >
+        <div className="px-40 py-20 bg-white rounded-md shadow-xl">
+          {user ? (
+            <div className="flex flex-col items-center">
+              <h1 className="font-bold text-gray-900 text-9xl">404</h1>
+
+              <h6 className="mb-2 text-2xl font-bold text-center text-gray-800 md:text-3xl">
+                <span className="text-red-900">Oops!</span> Page not found
+              </h6>
+
+              <Spinner></Spinner>
+
+              <p className="mb-8 text-center text-gray-700 md:text-lg">
+                The page you’re looking for doesn’t exist.
+              </p>
+
+              <Link
+                to="/"
+                className=" w-full px-6 py-2 mt-4 text-white bg-orange-600 rounded-md hover:bg-orange-800"
+              >
+                Back to home
+              </Link>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center">
+              <h1 className="font-bold text-gray-900 text-9xl">404</h1>
+
+              <h6 className="mb-2 text-2xl font-bold text-center text-gray-800 md:text-3xl">
+                <span className="text-red-900">Oops!</span> Page not found
+              </h6>
+
+              <Spinner></Spinner>
+
+              <p className="mb-8 text-center text-gray-700 md:text-lg">
+                You page you’re looking for doesn’t or Login to access this page
+                .
+              </p>
+
+              <Link
+                to="/login"
+                className=" w-full px-6 py-2 mt-4 text-white bg-orange-600 rounded-md hover:bg-orange-800"
+              >
+                Login
+              </Link>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* <div className=" my-12 flex flex-col items-between justify-between">
         <div>
           {user ? (
             <h3 class="text-red-900 bg-yellow-400 md:bg-transparent p-4 text-xl md:text-4xl  font-black capitalize">
@@ -59,7 +120,7 @@ const NotFound = () => {
             </Link>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -3,9 +3,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../../FirebaseConfig/Firebase.init";
 import ItemCard from "../ItemCard/ItemCard";
-
+import Spinner from "./../Shared/Spinner/Spinner";
 const MyItems = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const navigate = useNavigate();
 
@@ -27,17 +27,22 @@ const MyItems = () => {
   return (
     <div>
       <div className="bg-yellow-200 py-4  px-8">
-        <h2 className="text-2xl md:text-4xl font-black my-4">MY ITEMS</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3  lg:grid-cols-4 gap-6 container ">
-          {myorders.map((order) => (
-            <ItemCard
-              key={order._id}
-              order={order}
-              navigateToDetails={navigateToDetails}
-            ></ItemCard>
-          ))}
-          <div className="mr-4"></div>
-        </div>
+        <h2 className="text-2xl md:text-4xl font-black my-4">MY ORDERS</h2>
+
+        {myorders.length === 0 ? (
+          <Spinner></Spinner>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3  lg:grid-cols-4 gap-6 container ">
+            {myorders.map((order) => (
+              <ItemCard
+                key={order._id}
+                order={order}
+                navigateToDetails={navigateToDetails}
+              ></ItemCard>
+            ))}
+            <div className="mr-4"></div>
+          </div>
+        )}
       </div>
     </div>
   );

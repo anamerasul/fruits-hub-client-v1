@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate, useLocation } from "react-router";
 import { useSendEmailVerification } from "react-firebase-hooks/auth";
@@ -23,7 +23,7 @@ const RequireAuth = ({ children }) => {
   // }
   if (user.providerData[0]?.providerId === "password" && !user.emailVerified) {
     return (
-      <div>
+      <div className="bg-yellow-200 opacity-75">
         {!user.emailVerified ? (
           <h3 className="text-2xl mt-5 mb-5"> your Email is not verified</h3>
         ) : (

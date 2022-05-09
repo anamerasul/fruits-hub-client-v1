@@ -5,7 +5,7 @@ import auth from "../../../FirebaseConfig/Firebase.init";
 import ActiveLink from "../ActiveLink/ActiveLink";
 import Fruitsloger from "./../../../Images/Fruitslogor.png";
 
-const Header = ({}) => {
+const Header = () => {
   const [user] = useAuthState(auth);
   const [isExpanded, toggleExpansion] = useState(false);
   return (
@@ -46,13 +46,13 @@ const Header = ({}) => {
           >
             Home
           </ActiveLink>
-          <ActiveLink
+          {/* <ActiveLink
             to="/about"
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
           >
             About
-          </ActiveLink>
+          </ActiveLink> */}
 
           <ActiveLink
             to="/blog"
@@ -125,7 +125,7 @@ const Header = ({}) => {
               href="#responsive-header"
               className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4"
             >
-              Manage Items
+              All Orders
             </ActiveLink>
             <ActiveLink
               to="/additems"
@@ -139,7 +139,7 @@ const Header = ({}) => {
               href="#responsive-header"
               className="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white"
             >
-              My Items
+              My Orders
             </ActiveLink>
 
             <ActiveLink

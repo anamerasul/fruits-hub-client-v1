@@ -91,8 +91,8 @@ const SignUp = () => {
   }, [user]);
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="px-8 py-6 mx-4 mt-4 text-left bg-white md:w-1/3 lg:w-1/3 sm:w-1/3">
+    <div className="flex items-center justify-center bg-yellow-200 opacity-70">
+      <div className="px-8 py-6 mx-4 mt-4 text-left bg-white md:w-1/3 lg:w-1/3 sm:w-1/3 my-10">
         <h3 className="text-2xl font-bold text-center">Create a user</h3>
         <form onSubmit={handleCreateUser} action="">
           <div className="mt-4">

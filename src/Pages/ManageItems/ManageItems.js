@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ItemCard from "../ItemCard/ItemCard";
+import Spinner from "../Shared/Spinner/Spinner";
 
 const ManageItems = () => {
   const navigate = useNavigate();
@@ -21,17 +22,25 @@ const ManageItems = () => {
   return (
     <div>
       <div className="bg-yellow-200 py-4  px-8">
-        <h2 className="text-2xl md:text-4xl font-black my-4">MANAGE ITEMS</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3  lg:grid-cols-4 gap-6 container ">
-          {allorders.map((order) => (
-            <ItemCard
-              key={order._id}
-              order={order}
-              navigateToDetails={navigateToDetails}
-            ></ItemCard>
-          ))}
-          <div className="mr-4"></div>
-        </div>
+        <h2 className="text-2xl md:text-4xl font-black my-4">
+          {" "}
+          ALL USER ORDERS ITEMS
+        </h2>
+
+        {allorders.length === 0 ? (
+          <Spinner></Spinner>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3  lg:grid-cols-4 gap-6 container ">
+            {allorders.map((order) => (
+              <ItemCard
+                key={order._id}
+                order={order}
+                navigateToDetails={navigateToDetails}
+              ></ItemCard>
+            ))}
+            <div className="mr-4"></div>
+          </div>
+        )}
       </div>
     </div>
   );

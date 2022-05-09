@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../FirebaseConfig/Firebase.init";
 
@@ -14,7 +14,7 @@ const UpdateStockQuantity = () => {
   const navigate = useNavigate();
   const url = `http://localhost:3005/update/${id}`;
 
-  console.log(url);
+  // console.log(url);
 
   useEffect(() => {
     fetch(url)
@@ -22,20 +22,11 @@ const UpdateStockQuantity = () => {
       .then((data) => {
         setitems(data);
       });
-  }, [items.StockQuantity]);
+  }, []);
 
   // const url = `http://localhost:3005${window.location.pathname}`;
   const [newquantity, setnewquantity] = useState(0);
-  const {
-    _id,
-    DeliverdQuantiy,
-    StockQuantity,
-    description,
-    img,
-    name,
-    price,
-    Supplier,
-  } = items;
+  const { StockQuantity, description, img, name, price, Supplier } = items;
 
   const handleUpdateWithDelivered = async (_id) => {
     setnewquantity(newquantity + 1);

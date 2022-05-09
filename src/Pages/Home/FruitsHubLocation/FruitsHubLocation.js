@@ -2,8 +2,8 @@ import React from "react";
 
 const FruitsHubLocation = () => {
   return (
-    <div className="bg-yellow-200 container py-10">
-      <h2 className="text-2xl md:text-4xl font-black my-4 p-5">
+    <div className="bg-yellow-200  py-10">
+      <h2 className="text-2xl md:text-4xl font-black my-4 py-5">
         Fruits Hub Location
       </h2>
 
@@ -20,7 +20,7 @@ const FruitsHubLocation = () => {
             src="https://maps.google.com/maps?q=bogra&t=&z=19&ie=UTF8&iwloc=&output=embed"
           ></iframe>
         </div>
-        <div className="container px-5 py-24 mx-auto  flex">
+        <div className="py-24 mx-auto  flex">
           <div className="lg:w-1/3 md:w-1/2 bg-yellow-200 shadow-md rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10">
             <h2 className="text-lg mb-1 font-medium text-gray-900 title-font">
               Contact
